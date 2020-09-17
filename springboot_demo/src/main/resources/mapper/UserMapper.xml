@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <!--根据ID查询学生信息-->
+    <select id="selectStudentById" parameterType="String" resultType="com.example.demo.bean.UserBean">
+        SELECT * FROM student
+        WHERE studentId = #{studentId};
+    </select>
+
+    <!--添加学生,返回数据库操作影响行数，为0则是失败-->
+    <insert id="insertStudent" parameterType="com.example.demo.bean.UserBean">
+        INSERT into
+            student(studentId, name, department, major)
+        values
+            (#{studentId}, #{name}, #{department}, #{major});
+    </insert>
+
+    <!--根据id删除学生,返回数据库操作影响行数，为0则是失败-->
+    <delete id="deleteStudent" parameterType="String">
+        DELETE FROM student
+        WHERE studentId = #{studentId};
+    </delete>
+
+    <!--查询所有用户信息，返回一个List<Bean>-->
+    <select id="getAllStudent" resultType="com.example.demo.bean.UserBean">
+        SELECT * FROM student ;
+    </select>
+
+    <!--根据ID修改用户信息，返回数据库操作影响行数，为0则是失败-->
+    <update id="updateStudent" parameterType="com.example.demo.bean.UserBean">
+        UPDATE student
+        SET department = #{department},
+            name = #{name},
+            major = #{major}
+        WHERE studentId = #{studentId};
+    </update>
+
+
+</mapper>

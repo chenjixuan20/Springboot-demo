@@ -1,0 +1,14 @@
+
+
+spring:
+  datasource:
+    name: Advanced_Software_Engineering #数据库名
+    url: jdbc:mysql://localhost:3306/Advanced_Software_Engineering?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC #url
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库驱动
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #配置映射文件
+  type-aliases-package: com.example.demo.bean #配置实体类
